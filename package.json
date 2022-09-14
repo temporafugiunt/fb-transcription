@@ -1,75 +1,47 @@
 {
-  "name": "@temporafugiunt/fb-transcription",
-  "version": "0.2.4",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "engines": {
-    "node": ">=10"
-  },
+  "name": "fb-transcription",
+  "version": "0.0.0",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
-    "package": "ng-packagr -p ng-package.json && cd dist && npm pack",
-    "publish": "npm publish ./dist"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "publish": "npm publish ./dist/fb-transcription"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "repository": "git://github.com/temporafugiunt/fb-transcription.git",
-  "author": "James Eby",
-  "module": "dist/fb-transcription.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/fb-transcription.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/fb-transcription.esm.js",
-      "limit": "10 KB"
-    }
-  ],
+  "private": true,
   "dependencies": {
-    "tslib": "^2.0.0"
-  },
-  "peerDependencies": {
     "@angular/animations": "^12.1.3",
+    "@angular/cdk": "^12.1.3",
     "@angular/common": "^12.1.3",
     "@angular/compiler": "^12.1.3",
     "@angular/core": "^12.1.3",
-    "@angular/forms": "^12.1.3",
+    "@angular/forms": "^12.2.16",
     "@angular/material": "^12.1.3",
+    "@angular/platform-browser": "^12.1.3",
+    "@angular/platform-browser-dynamic": "^12.1.3",
+    "@angular/router": "^12.1.3",
     "peerjs": "^1.3.1",
-    "uuid": "^8.3.2"
+    "rxjs": "~6.6.0",
+    "tslib": "^2.2.0",
+    "uuid": "^8.3.2",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1002.3",
-    "@angular/compiler-cli": "~10.2.4",
-    "@size-limit/preset-small-lib": "^8.1.0",
+    "@angular-devkit/build-angular": "~12.1.4",
+    "@angular/cli": "^12.1.3",
+    "@angular/compiler-cli": "^12.1.3",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.11.1",
     "@types/peerjs": "^1.1.0",
     "@types/uuid": "^8.3.2",
-    "husky": "^8.0.1",
-    "ng-packagr": "^12.2.7",
-    "size-limit": "^8.1.0",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.2.3"
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^12.1.0",
+    "typescript": "~4.3.2"
   }
 }

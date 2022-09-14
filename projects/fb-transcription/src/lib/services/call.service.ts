@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as Peer from 'peerjs';
+import { Peer } from 'peerjs';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -88,7 +88,7 @@ export class CallService {
         audio: true,
       });
       this.localStreamBs.next(stream);
-      this.peer.on('call', async call => {
+      this.peer.on('call', async (call) => {
         this.mediaCall = call;
         this.isCallStartedBs.next(true);
 
