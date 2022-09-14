@@ -1,5 +1,6 @@
 {
-  "version": "0.1.0",
+  "name": "@temporafugiunt/fb-transcription",
+  "version": "0.2.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -17,7 +18,9 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "package": "ng-packagr -p ng-package.json && cd dist && npm pack",
+    "publish": "npm publish ./dist"
   },
   "husky": {
     "hooks": {
@@ -30,7 +33,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@temporafugiunt/fb-transcription",
   "repository": "git://github.com/temporafugiunt/fb-transcription.git",
   "author": "James Eby",
   "module": "dist/fb-transcription.esm.js",
@@ -44,12 +46,30 @@
       "limit": "10 KB"
     }
   ],
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^12.1.3",
+    "@angular/common": "^12.1.3",
+    "@angular/compiler": "^12.1.3",
+    "@angular/core": "^12.1.3",
+    "@angular/forms": "^12.1.3",
+    "@angular/material": "^12.1.3",
+    "peerjs": "^1.3.1",
+    "uuid": "^8.3.2"
+  },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1002.3",
+    "@angular/compiler-cli": "~10.2.4",
     "@size-limit/preset-small-lib": "^8.1.0",
+    "@types/peerjs": "^1.1.0",
+    "@types/uuid": "^8.3.2",
     "husky": "^8.0.1",
+    "ng-packagr": "^12.2.7",
     "size-limit": "^8.1.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
-    "typescript": "^3.9.10"
+    "typescript": "^4.2.3"
   }
 }
