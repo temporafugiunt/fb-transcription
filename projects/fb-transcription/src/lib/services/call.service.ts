@@ -76,7 +76,7 @@ export class CallService {
       this.mediaCall.on('close', () => this.onCallClose());
     } catch (ex) {
       console.error(ex);
-      this.snackBar.open(ex, 'Close');
+      this.snackBar.open(ex as string, 'Close');
       this.isCallStartedBs.next(false);
     }
   }
@@ -105,7 +105,7 @@ export class CallService {
       });
     } catch (ex) {
       console.error(ex);
-      this.snackBar.open(ex, 'Close');
+      this.snackBar.open(ex as string, 'Close');
       this.isCallStartedBs.next(false);
     }
   }
