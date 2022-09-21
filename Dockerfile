@@ -4,18 +4,27 @@ ARG BUILD_VERSION=NOT_SET
 
 ARG ENVIRONMENT=production
 
-ARG NODE_AUTH_TOKEN=unknown
-ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
+ARG NPM_USER=unknown
+ENV NPM_USER=${NPM_USER}
+
+ARG NPM_AUTH_TOKEN=unknown
+ENV NPM_AUTH_TOKEN=${NPM_AUTH_TOKEN}
+
+ARG NPM_EMAIL=james@freebytech.com
+ENV NPM_EMAIL=${NPM_EMAIL}
 
 RUN mkdir /app
 WORKDIR /app
+
+RUN npm install -g npm-cli-login
 
 COPY package.json ./package.json
 COPY package-lock.json .
 RUN npm install
 
 COPY . .
-RUN sed -i "s/REPO_USER_PAT/${GITHUB_USER_PAT}/g" .npmrc
+RUN npm version ${BUILD_VERSION}
+RUN npm-cli-login -u '${NPM_USER}' -p '${NPM_AUTH_TOKEN}' -e '${NPM_EMAIL}'
+RUN npm run build -- --configuration ${ENVIRONMENT}
 
-RUN npm run build -- --configuration ${ENVIRONMENT} 
 RUN npm run publish
