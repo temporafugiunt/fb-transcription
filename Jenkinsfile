@@ -16,7 +16,9 @@ node
 
   showBuildSettings()
   extraSHCommands = ""
-  extraDockerBuildArguments = ""
-  buildInfo = build(this, versionPrefix, repository, imageName, extraDockerBuildArguments, true, true, NugetPushOptionEnum.NoPush, '', '.', '', extraSHCommands)
+  withCredentials([usernamePassword(credentialsId: 'a28fbe0d-6c96-4178-bac2-56de06cd26e2', passwordVariable: 'GITHUB_TOKEN', usernameVariable: 'GITHUB_USER')]) {
+    extraDockerBuildArguments = "--build-arg ENVIRONMENT=production --build-arg NODE_AUTH_TOKEN=$env.GITHUB_TOKEN"
+    buildInfo = build(this, versionPrefix, repository, imageName, extraDockerBuildArguments, true, true, NugetPushOptionEnum.NoPush, '', '.', '', extraSHCommands)
+  }
 }
 
