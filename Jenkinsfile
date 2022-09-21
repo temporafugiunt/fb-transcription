@@ -15,6 +15,7 @@ node
   stage('Get package.json Version')
   {
     script {
+      sh 'pwd | ls -la'
     // Major and minor version pulled from the package.json file.
       versionPrefix = """${sh(
               returnStdout: true,
