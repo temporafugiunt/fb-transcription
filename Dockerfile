@@ -29,6 +29,7 @@ COPY package-lock.json .
 RUN npm install
 
 COPY . .
+RUN echo npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
 RUN npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
 RUN npm run build -- --configuration ${ENVIRONMENT}
 
