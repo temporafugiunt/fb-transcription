@@ -29,8 +29,9 @@ COPY package-lock.json .
 RUN npm install
 
 COPY . .
-RUN echo npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
-RUN npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
+# RUN echo npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
+# RUN npm-cli-login -u ${NPM_USER} -p ${NPM_AUTH_TOKEN} -e ${NPM_EMAIL} -r ${NPM_REGISTRY} -s ${NPM_SCOPE}
+RUN sed -i \'s/NPM_AUTH_TOKEN/${NPM_AUTH_TOKEN}",/\' .npmrc
 RUN npm run build -- --configuration ${ENVIRONMENT}
 
 RUN npm run publish
