@@ -22,7 +22,7 @@ ENV NPM_REGISTRY=${NPM_REGISTRY}
 RUN mkdir /app
 WORKDIR /app
 
-RUN npm install -g npm-cli-login
+# RUN npm install -g npm-cli-login
 
 COPY package.json ./package.json
 COPY package-lock.json .
